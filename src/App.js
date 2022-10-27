@@ -11,6 +11,7 @@ import {
   HeaderMenu,
   HeaderMenuButton,
   HeaderMenuItem,
+  HeaderPanel,
   HeaderSideNavItems,
   RadioButtonGroup,
   RadioButton,
@@ -30,75 +31,74 @@ import {
   Search,
   Notification,
   Fade,
-  Switcher,
-  PropertyRelationship
+  Switcher
 } from '@carbon/icons-react';
 import './App.scss';
 
 export default function App() {
   
-
   const PageForm = () => {
-
     return (
       <>
-        <Form>
-          <Stack gap={7}>
-            <NumberInput/>
-            <RadioButtonGroup
-              name="radio-button-group"
-              defaultSelected="default-selected"
-              legendText="Radio Button heading">
-              <RadioButton
-                value="standard"
-                id="radio-1"
-                labelText="Standard Radio Button"
+        <div className="pageForm">
+          <Form>
+            <Stack gap={7}>
+              <NumberInput/>
+              <RadioButtonGroup
+                name="radio-button-group"
+                defaultSelected="default-selected"
+                legendText="Radio Button heading">
+                <RadioButton
+                  value="standard"
+                  id="radio-1"
+                  labelText="Standard Radio Button"
+                  />
+                <RadioButton
+                  value="default-selected"
+                  labelText="Default Selected Radio Button"
+                  id="radio-2"
+                  />
+                <RadioButton
+                  value="blue"
+                  labelText="Standard Radio Button"
+                  id="radio-3"
+                  />
+                <RadioButton
+                  value="disabled"
+                  labelText="Disabled Radio Button"
+                  id="radio-4"
+                  disabled
+                  />
+              </RadioButtonGroup>
+              <Select id="select-1" defaultValue="placeholder-item">
+                <SelectItem
+                  disabled
+                  hidden
+                  value="placeholder-item"
+                  text="Choose an option"
+                  />
+                <SelectItem value="option-1" text="Option 1" />
+                <SelectItem value="option-2" text="Option 2" />
+                <SelectItem value="option-3" text="Option 3" />
+              </Select>
+              <TextInput />
+              <TextInput
+                type="password"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 />
-              <RadioButton
-                value="default-selected"
-                labelText="Default Selected Radio Button"
-                id="radio-2"
+              <TextInput
+                type="password"
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 />
-              <RadioButton
-                value="blue"
-                labelText="Standard Radio Button"
-                id="radio-3"
-                />
-              <RadioButton
-                value="disabled"
-                labelText="Disabled Radio Button"
-                id="radio-4"
-                disabled
-                />
-            </RadioButtonGroup>
-            <Select id="select-1" defaultValue="placeholder-item">
-              <SelectItem
-                disabled
-                hidden
-                value="placeholder-item"
-                text="Choose an option"
-                />
-              <SelectItem value="option-1" text="Option 1" />
-              <SelectItem value="option-2" text="Option 2" />
-              <SelectItem value="option-3" text="Option 3" />
-            </Select>
-            <TextInput />
-            <TextInput
-              type="password"
-              required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-              />
-            <TextInput
-              type="password"
-              required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-              />
-            <TextArea/>
-            <Button type="submit" className="some-class">
-              Submit
-            </Button>
-          </Stack>
-        </Form>
+              <TextArea/>
+              <Button type="submit" className="some-class">
+                Submit
+              </Button>
+            </Stack>
+          </Form>
+        </div>
       </>
     )
   }
@@ -171,8 +171,9 @@ export default function App() {
                   </SideNavMenu>
                   <SideNavMenu
                     renderIcon={Fade}
-                  title="Category title"
-                    isActive={true}>
+                    title="Category title"
+                    isActive={true}
+                  >
                     <SideNavMenuItem href="https://www.carbondesignsystem.com/">
                       Link
                     </SideNavMenuItem>
@@ -184,20 +185,24 @@ export default function App() {
                     <SideNavMenuItem href="https://www.carbondesignsystem.com/">
                       Link
                     </SideNavMenuItem>
-                </SideNavMenu>
-                <SideNavLink
+                  </SideNavMenu>
+                  <SideNavLink
                     renderIcon={Fade}
-                  href="https://www.carbondesignsystem.com/">
+                    href="https://www.carbondesignsystem.com/"
+                  >
                     Link
                   </SideNavLink>
                   <SideNavLink
                     renderIcon={Fade}
-                    href="https://www.carbondesignsystem.com/">
+                    href="https://www.carbondesignsystem.com/"
+                  >
                     Link
                   </SideNavLink>
                 </SideNavItems>
               </SideNav>
             </Header>
+            <HeaderPanel aria-label="App Switcher" expanded={true} />
+            <HeaderPanel aria-label="notifications" expanded={false} />
             <Content children={<PageForm/>}/>
           </>
         )}

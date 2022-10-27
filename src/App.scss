@@ -1,2 +1,6 @@
-.pageBody {
+.pageForm {
+  margin-left: 250px;
+}
+@media (max-width:1055px) {
+  .pageForm {margin-left: 0px;}
 }
